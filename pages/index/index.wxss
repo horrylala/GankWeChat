@@ -4,18 +4,20 @@
   height: 100%;
   display: flex;
   padding: 20rpx;
-  margin: 20rpx;
+  margin: 40rpx;
 }
 .index {
-    width: 100%;
+  width: 100%;
   height: 100%;
 }
 .section_title {
   font-size: 50rpx;
+  padding: 40rpx 10rpx;
 }
 
-.section_coontent {
-  font-size: 40rpx;
+.section_content {
+  font-size: 30rpx;
+  padding: 10rpx;
 }
 
 .desc_img {

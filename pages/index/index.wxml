@@ -4,14 +4,17 @@
     <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
       <block wx:for="{{imageUrls}}">
         <swiper-item>
-          <image src="{{item}}" class="slide-image"></image>
+          <image src="{{item.url}}" style=" width: 100%; height: 100%; top: 0px; left: 200%;"></image>
         </swiper-item>
       </block>
     </swiper>
     <block wx:for="{{pageData}}" class="container">
-      <view class="section_title">{{item}}</view> 
-      <view class="section_content">
-      <view></view>
+      <view class="section_title">{{index}}</view> 
+      <view wx:for="{{item}}" class="section_content">
+      <view>{{item.desc}}</view>
+      <view wx:for="{{item.images}}">   
+      <image style="display:{{item == ''}} ? none ,flex;" src="{{item}}"></image>
+      </view>
       </view> 
       <!--<image  src="http://wx.qlogo.cn/mmhead/DYAIOgq83eqNnDuMoPQ3lYb07MSvzMXOic6pUf74ocpnYwdhYvZNbKQ/132" background-size="cover"></image>-->
     </block>

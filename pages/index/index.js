@@ -7,11 +7,12 @@ Page({
   data: {
     motto: 'Hello World',
     userInfo: {},
-    imageUrls: [
-      'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-      'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
-      'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
-    ],
+    // imageUrls: [
+    //   'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
+    //   'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
+    //   'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
+    // ],
+    imageUrls:[],
     indicatorDots: true,
     autoplay: true,
     interval: 5000,
@@ -41,7 +42,11 @@ Page({
     var date = util.getCurrentDate();
     request.getNewsDay(date, (data) => {
       console.log(data);
+      var category = data.data.category;
       var results = data.data.results;
+      var images = results.福利;
+      _this.setData({imageUrls: images});
+      console.log(images);
       _this.setData({pageData: results});
     },() => {
       console.log('callbackerror');
