@@ -19,5 +19,19 @@
       <!--<image  src="http://wx.qlogo.cn/mmhead/DYAIOgq83eqNnDuMoPQ3lYb07MSvzMXOic6pUf74ocpnYwdhYvZNbKQ/132" background-size="cover"></image>-->
     </block>
 </view>
+<view class="float-action" bindtap="ballClickEvent" touchmove="ballMoveEvent" style="opacity:20%;bottom:20px;right:20px;"></view>
+<view class="slide-mask" style="display:{{maskDisplay}}" bindtap="slideCloseEvent"></view>
+<view class="slide-menu" animation="{{slideAnimation}}">
+  <navigator url="../category/category?category=all" hover-class="navigator-hover">all</navigator>
+  <navigator url="../category/category?category=Android" hover-class="navigator-hover">Android</navigator>
+  <navigator url="../category/category?category=休息视频" hover-class="navigator-hover">休息视频</navigator>
+  <navigator url="../category/category?category=福利" hover-class="navigator-hover">福利</navigator>
+  <navigator url="../category/category?category=拓展资源" hover-class="navigator-hover">拓展资源</navigator>
+  <navigator url="../category/category?category=前端" hover-class="navigator-hover">前端</navigator>
+  <navigator url="../category/category?category=瞎推荐" hover-class="navigator-hover">瞎推荐</navigator>
+  <navigator url="../category/category?category=App" hover-class="navigator-hover">App</navigator>
 </view>
+</view>
+
+
 

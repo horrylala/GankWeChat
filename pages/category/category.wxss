@@ -17,3 +17,7 @@
 .textContainer {
   margin-top: 200px;
 }
+
+.section_desc {
+  padding: 60rpx;
+}

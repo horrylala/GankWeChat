@@ -1,5 +1,10 @@
 <view class="container">
-  <view class="textContainer">
-    <text class="textStyle">{{text}}</text>
-  </view>
+<view class="section">
+  <view class="section_title">{{category}}</view>
+  <scroll-view scroll-y="true" style="height:100%;width:100%;display:block;" bindscrolltolower="loadingMore">
+  <block wx:for="{{categoryData}}">
+    <view class="section_desc">{{item.desc}}</view>
+  </block>
+  </scroll-view>
+</view>
 </view>

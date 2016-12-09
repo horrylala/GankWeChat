@@ -11,6 +11,7 @@ function requestData(url, data, successCallback, errorCallback, completeCallback
       // header: {}, // 设置请求的 header
       success: function(res){
         // success
+        console.log('request url:' , url );
         console.log( 'response data: ', res );
         if(res.statusCode == 200)
           return util.isFunction(successCallback) && successCallback(res);

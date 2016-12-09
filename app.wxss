@@ -1,5 +1,6 @@
 /**app.wxss**/
 page {
+  position: relative;
   background-color: #fbf9fe;
   height: 100%;
   width: 100%;

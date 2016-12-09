@@ -17,7 +17,9 @@ Page({
     autoplay: true,
     interval: 5000,
     duration: 1000,
-    pageData: {}
+    pageData: {},
+    maskDisplay: 'none',
+    slideAnimation: ''
   },
   //事件处理函数
   bindViewTap: function () {
@@ -53,5 +55,26 @@ Page({
     },() => {
       console.log('callbackcomplete');
     })
+  },
+  //slide up
+   ballClickEvent: function() {
+    slideUp.call(this);
+  },
+  ballMoveEvent: function() {
+
+  },
+  toCategory: function(category) {
+    wx.navigateTo({
+      url: '../category/category',
+    })
   }
-})
+});
+
+  function slideUp(){
+    var animation = wx.createAnimation({
+      duration:600
+    });
+    this.setData({maskDisplay: 'block'});
+    animation.translateX('100%').step();
+    this.setData({slideAnimation: animation.export});
+  }
