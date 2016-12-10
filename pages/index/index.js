@@ -19,7 +19,9 @@ Page({
     duration: 1000,
     pageData: {},
     maskDisplay: 'none',
-    slideAnimation: ''
+    slideAnimation: '',
+    ballBottom: 20,
+    ballRight: 20
   },
   //事件处理函数
   bindViewTap: function () {
@@ -47,8 +49,13 @@ Page({
       var category = data.data.category;
       var results = data.data.results;
       var images = results.福利;
+      for(var i=0; i< images.length; i++){
+        //地址被封，换地址
+        images[i].url = images[i].url.replace("ww","ws");
+      }
       _this.setData({imageUrls: images});
       console.log(images);
+      
       _this.setData({pageData: results});
     },() => {
       console.log('callbackerror');
@@ -60,8 +67,24 @@ Page({
    ballClickEvent: function() {
     slideUp.call(this);
   },
-  ballMoveEvent: function() {
-
+  slideCloseEvent: function() {
+    slideDown.call(this);
+  },
+  //浮动球移动事件
+  ballMoveEvent: function( e ) {
+    var touchs = e.touches[ 0 ];
+    var pageX = touchs.pageX;
+    var pageY = touchs.pageY;
+    if( pageX < 25 ) return;
+    if( pageX > this.data.screenWidth - 25 ) return;
+    if( this.data.screenHeight - pageY <= 25 ) return;
+    if( pageY <= 25 ) return;
+    var x = this.data.screenWidth - pageX - 25;
+    var y = this.data.screenHeight - pageY - 25;
+    this.setData( {
+      ballBottom: y,
+      ballRight: x
+    });
   },
   toCategory: function(category) {
     wx.navigateTo({
@@ -75,6 +98,15 @@ Page({
       duration:600
     });
     this.setData({maskDisplay: 'block'});
-    animation.translateX('100%').step();
-    this.setData({slideAnimation: animation.export});
+    animation.left('0%').step();
+    this.setData({slideAnimation: animation.export()});
   }
+
+function slideDown() {
+    var animation = wx.createAnimation({
+      duration:400
+    });
+    animation.left('-70%').step();
+    this.setData({slideAnimation: animation.export()});
+    this.setData({maskDisplay: 'none'});
+}

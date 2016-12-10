@@ -10,20 +10,7 @@
   width: 100%;
   height: 100%;
 }
-.section_title {
-  font-size: 50rpx;
-  padding: 40rpx 10rpx;
-}
 
-.section_content {
-  font-size: 30rpx;
-  padding: 10rpx;
-}
-
-.desc_img {
-  width: 50%;
-  height: 50%;
-}
 
 .top_img {
   border: 4px solid #FFFFFF;
@@ -35,7 +22,7 @@
 }
 
 .float-action {
-  position: absolute;
+  position: fixed;
   bottom: 20px;
   right: 20px;
   width: 30px;
@@ -51,12 +38,26 @@
   top: 0;
   left: 0;
   bottom: 0;
-  background: rgb(0, 0, 0, 20%);
-  z-index: 800;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 700;
 }
 .slide-menu {
   position: fixed;
   top: 0;
+  left: -70%;
+  width: 60%;
+  height: 100%;
   background: #fff;
-  z-index: 900;
+  z-index: 1000;
+  padding: 0 20rpx;
+}
+
+.banner {
+  height: 700rpx;
+}
+.navigator-hover {
+  padding: 20rpx 0;
+  border-bottom: 1px solid #eee;
+  background: #fff;
+  font-size: 30rpx;
 }

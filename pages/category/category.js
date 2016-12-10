@@ -20,7 +20,13 @@ Page({
       page: 1
     }
     request.getNewsCategory(categoryObj, (res) =>{
-      this.setData({categoryData: res.data.results})
+       var categories = res.data.results;
+       if(this.data.category=='福利'){
+           for(var i =0; i<categories.length; i++){
+             categories[i].url = categories[i].url.replace("ww","ws");
+            }
+       }
+      this.setData({categoryData: categories})
     },null,null)
   },
   onShow:function(){

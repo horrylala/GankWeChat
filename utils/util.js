@@ -22,7 +22,7 @@ function getCurrentDate() {
     date: date,
     year: date.getFullYear(),
     month: date.getMonth(),
-    day: date.getDay()-1
+    day: date.getDay()- 2
   }
 }
 function isFunction(val){
