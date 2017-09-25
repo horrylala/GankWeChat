@@ -1,7 +1,7 @@
 <view class="section">
   <view class="section_title">{{category}}</view>
   <scroll-view scroll-y="true" style="height:100%;width:100%;display:block;" bindscrolltolower="loadingMore">
-  <block wx:for="{{categoryData}}">
+  <block wx:for="{{categoryData}}" wx:key="{{item.id}}">
     <view class="section_content">{{item.desc}}</view>
     <view class="{{category == '福利'? '': 'has-image'}}" style="display:" wx:for="{{item.images}}">   
           <image mode="aspectFit" src="{{item}}"></image>

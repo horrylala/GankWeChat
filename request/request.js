@@ -30,7 +30,7 @@ function requestData(url, data, successCallback, errorCallback, completeCallback
 }
 
 function getNewsDay(date, successCallback, errorCallback, completeCallback){
-  return requestData(api.getDayNews(date.year, date.month, date.day), {}, successCallback, errorCallback, completeCallback);
+  return requestData(api.getDayNews(date.year, date.month, date.day-2), {}, successCallback, errorCallback, completeCallback);
 }
 
 function getNewsCategory(categeryObj,successCallback, errorCallback, completeCallback){

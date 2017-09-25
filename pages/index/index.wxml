@@ -2,22 +2,22 @@
   <view class="index">
     <scroll-view scroll-y="false" style="height:100%;width:100%;display:block;">
     <swiper class="banner" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-      <block wx:for="{{imageUrls}}">
+      <block wx:for="{{imageUrls}}" wx:key="{{item.id}}">
         <swiper-item>
           <image src="{{item.url}}" mode="aspectFit" style=" width: 100%; height: 100%; top: 0px; left: 200%;"></image>
         </swiper-item>
       </block>
     </swiper>
-    <block wx:for="{{pageData}}" class="container">
+    <block wx:for="{{pageData}}" wx:key="{{item.id}}" class="container">
       <view style=" background: #fff; margin-top: 20rpx; border-top: 1px solid #eee;">
           <view class="section_title">{{index}}</view> 
-          <view wx:for="{{item}}" class="section_content">
+          <view wx:for="{{item}}" wx:key="{{item.id}}" class="section_content">
               <view>{{item.desc}}</view>
               <view>
                 <view class="inline-block">{{item.who}}</view>
                 <view class="inline-block">{{item.publishedAt}}</view>
               </view>
-              <view wx:for="{{item.images}}">   
+              <view wx:for="{{item.images}}" wx:key="{{item.id}}">   
                   <image mode="aspectFit" src="{{item}}"></image>
               </view>
           </view> 

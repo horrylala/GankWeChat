@@ -44,19 +44,53 @@ Page({
     console.log('onReady');
     var _this = this;
     var date = util.getCurrentDate();
+    _this.getTodayNews(date);
+  },
+  getTodayNews: function(date) {
+    var _this = this
     request.getNewsDay(date, (data) => {
       console.log(data);
       var category = data.data.category;
-      var results = data.data.results;
-      var images = results.福利;
-      for(var i=0; i< images.length; i++){
-        //地址被封，换地址
-        images[i].url = images[i].url.replace("ww","ws");
+      if (category.length !== 0) {
+        var results = data.data.results;
+        var images = results.福利;
+        for(var i=0; i< images.length; i++){
+          //地址被封，换地址
+          images[i].url = images[i].url.replace("ww","ws");
+        }
+        _this.setData({
+          imageUrls: images,
+          pageData: results
+        });
+      } else if (category.length === 0) {
+        //如果有一天没有数据，向后推一天
+          var newDate = date;
+          newDate.day = date.day - 1;
+          request.getNewsDay(newDate, (data) => {
+          console.log(data);
+          var category = data.data.category;
+          if (category.length !== 0) {
+            var results = data.data.results;
+            var images = results.福利;
+            for(var i=0; i< images.length; i++){
+              //地址被封，换地址
+              images[i].url = images[i].url.replace("ww","ws");
+            }
+            _this.setData({
+              imageUrls: images,
+              pageData: results
+            });
+          } else if (category.length === 0) {
+            //如果有一天没有数据，向后推一天
+            
+          }
+        },() => {
+          console.log('callbackerror');
+        },() => {
+          console.log('callbackcomplete');
+        })
+
       }
-      _this.setData({imageUrls: images});
-      console.log(images);
-      
-      _this.setData({pageData: results});
     },() => {
       console.log('callbackerror');
     },() => {
